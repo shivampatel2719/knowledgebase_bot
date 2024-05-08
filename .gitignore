@@ -1,0 +1,71 @@
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.pyc
+*.pyo
+*.pyz
+*.pywz
+
+# Virtual Environment
+venv/
+env/
+.venv/
+.venv3/
+.venv2/
+env.bak/
+venv.bak/
+.venv.bak/
+.vscode/
+
+# IDE-specific
+.idea/
+*.idea
+.vscode/
+
+# Dependency directories
+dist/
+build/
+egg-info/
+pip-wheel-metadata/
+*.egg-info/
+*.egg/
+*.whl/
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Compiled files
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+*.pyo
+*.pyz
+*.pywz
+
+# Cache files
+.cache/
+.clangd/
+
+# Other
+*.bak
+*.tmp
+*.swp
+*.swo
+*.class
+*.so
+*.dll
+*.log
+*.log.*
+*.out
+*.pid
+*.pid.lock
+*.tmp
