@@ -1,6 +1,5 @@
 import random
 import boto3
-from constants import static_responses
 
 class BedRockAgentRuntime(object):
     '''
