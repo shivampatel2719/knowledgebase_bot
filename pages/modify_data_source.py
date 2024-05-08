@@ -77,7 +77,6 @@ class ModifyDataSourcePage:
                     self.s3_client.delete_s3_object(bucket_name=self.bucket_name, key=object_key)
                     self.knowledge_base_client.sync_data_source(dataSourceId=self.dataSourceId, knowledgeBaseId=self.kb_id)
                     st.rerun()
-                    st.write(s3_objects)
             st.divider()
     
 if __name__=='__main__':
