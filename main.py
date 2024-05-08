@@ -21,10 +21,12 @@ class MainApp(object):
                         <h3>{card['name']} </h3>
                         <button disabled style="{css.button_style_success}">{card['status']}</button>
                         <p></p>
-                        <a target="_self" href="{card['link']}" style="text-decoration: none; color: inherit;">
+                        <a target="_self" href="{card['chat_link']}" style="text-decoration: none; color: inherit;">
                             <button style="{css.button_style_info}">Chat</button>
                         </a>
-                        <button style="{css.button_style_info}">Modify Data Source</button>
+                        <a target="_self" href="{card['modify_link']}" style="text-decoration: none; color: inherit;">
+                            <button style="{css.button_style_info}">Modify Data Source</button>
+                        </a>
                     </div>
                     
                 """, unsafe_allow_html=True)    
@@ -35,7 +37,8 @@ class MainApp(object):
         knowledge_base_responses = KnowledgeBaseClient.list_knowledge_base()
         knowledge_bases = []
         for knowledge_base_response in knowledge_base_responses["knowledgeBaseSummaries"]:
-            knowledge_base_response["link"] = f'/chat/?KBId={knowledge_base_response.get("knowledgeBaseId")}'
+            knowledge_base_response["chat_link"] = f'/chat/?KBId={knowledge_base_response.get("knowledgeBaseId")}'
+            knowledge_base_response["modify_link"] = f'/modify_data_source/?KBId={knowledge_base_response.get("knowledgeBaseId")}'
             knowledge_bases.append(knowledge_base_response)
         self.display_cols(knowledge_bases=knowledge_bases)
 

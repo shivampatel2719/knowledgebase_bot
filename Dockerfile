@@ -19,8 +19,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application code into the container at /app
 COPY . /app/
 
-# Expose the port that Streamlit runs on (default is 8501)
 EXPOSE 8501
 
-# Run the Streamlit app when the container launches
-CMD ["streamlit", "run", "main.py"]
+# Expose the port that Streamlit runs on (default is 8501)
+HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
+
+ENTRYPOINT ["streamlit", "run", "main.py", "--server.port=8501", "--server.address=0.0.0.0"]

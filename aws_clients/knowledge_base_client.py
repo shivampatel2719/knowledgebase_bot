@@ -2,6 +2,9 @@ import boto3
 
 class KnowledgeBaseClient(object):
     
+    def __init__(self) -> None:
+        self.client = boto3.client('bedrock-agent')
+    
     @staticmethod
     def create_knowledge_base(client, name, roleArn):
         try:
@@ -46,3 +49,15 @@ class KnowledgeBaseClient(object):
         client = boto3.client('bedrock-agent')
         response = client.list_knowledge_bases()
         return response
+    
+    def sync_data_source(self, dataSourceId, knowledgeBaseId):
+        response = self.client.start_ingestion_job(
+            dataSourceId=dataSourceId,
+            knowledgeBaseId=knowledgeBaseId
+        )
+        response_injestion_job = response.get("ingestionJob")
+        if "failureReasons" in response_injestion_job:
+            return 500, response_injestion_job.get("failureReasons")
+        if "ingestionJobId" in response_injestion_job:
+            return 200, response_injestion_job.get("ingestionJobId")
+    
