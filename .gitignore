@@ -69,3 +69,5 @@ Thumbs.db
 *.pid
 *.pid.lock
 *.tmp
+
+init_env.sh

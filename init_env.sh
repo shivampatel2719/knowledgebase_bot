@@ -1,1 +1,1 @@
-export AWS_PROFILE=default
+export AWS_PROFILE=shivam-sandbox
